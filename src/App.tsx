@@ -42,7 +42,7 @@ export const App = () => {
           >
             Cambia
           </button>
-          <Link to= "fronted-rocks/dettaglio/1">Link alla pagina di dettaglio </Link>
+          <Link to= "/fronted-rocks/dettaglio/1">Link alla pagina di dettaglio </Link>
             
         
         
