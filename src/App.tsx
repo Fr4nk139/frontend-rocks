@@ -1,57 +1,89 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
-
-export const Detail = () => {
-  const { id } = useParams();
-  return <div>Dettaglio : {id}</div>
-} 
 
 
+interface PokemonCard {
+  id: number;
+  image: string;
+  name: string;
+  types: string[];
 
+}
+
+const data = [
+  {
+    id: 1, 
+    name: "Bulbasaur",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png",
+    types: ["grass", "poison"]
+  },
+
+  {
+    id: 2, 
+    name: "Ivysaur",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/2.png",
+    types: ["grass", "poison"]
+  },
+
+  {
+    id: 3, 
+    name: "Venusaur",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/3.png",
+    types: ["grass", "poison"]
+  },
+  {
+    id: 4, 
+    name: "Charmander",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/4.png",
+    types: ["fire"]
+  },
+  {
+    id: 5, 
+    name: "Charmeleon",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/5.png",
+    types: ["fire"]
+  },
+  {
+    id: 6, 
+    name: "Charizard",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/6.png",
+    types: ["fire", "flying"]
+  },
+  {
+    id: 7, 
+    name: "Squirtle",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/7.png",
+    types: ["water"]
+  },
+  {
+    id: 8, 
+    name: "Wartortle",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/8.png",
+    types: ["water"]
+  },
+  {
+    id: 9, 
+    name: "Blastoise",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/9.png",
+    types: ["water"]
+  },
+]
 export const App = () => {
-  const [count, setCount] = useState(0);
-  const [title, setTitle] = useState("Pokedex");
+  return <div >
+    <div  className="flex flex-row">
+      {data.map((item) =>{
+        return (
+          <div>
+            {item.id} - {item.name}
+            <img src = {item.image}/>
 
-
-  useEffect(() => {
-    if (count == 4){
-      setTitle("ho raggiunto il valore 4")
-    }
-  }, [count])
-
-  return (
-    <div className="h-dvh flex flex-col items-center justify-center">
-      <div className="bg-white p-8 rounded-md shadow-lg">
-        <h1 className="text-center font-bold text-3xl text-blue-400 mb-4">
-          {title}
-        </h1>
-
-        <h2 className="text-center font-bold text-xl mb-6">Vite + React</h2>
-
-        <div className="flex flex-col items-center space-y-4">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md cursor-pointer hover:bg-blue-600 transition-colors"
-            onClick={() => setCount((count) => count + 1)}
-          >
-            Hai premuto il pulsante {count} {count === 1 ? "volta" : "volte"}
-          </button>
-
-          <button
-              className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md cursor-pointer hover:bg-blue-600 transition-colors"
-              onClick={() => setTitle("Charizard")}
-          >
-            Cambia
-          </button>
-          <Link to= "/frontend-rocks/dettaglio/1">Link alla pagina di dettaglio </Link>
             
-        
-        
-
-          <p className="text-center">
-            Modifica <code>src/App.tsx</code> e salva per testare l'hot reload
-          </p>
-        </div>
-      </div>
+      
+          </div>
+        )
+      }
+    )}
     </div>
-  );
+  </div>
+}
+export const Detail = () => {
+  return null
 }
