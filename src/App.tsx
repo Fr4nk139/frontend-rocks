@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+
+export const Detail = () => {
+  const { id } = useParams();
+  return <div>Dettaglio : {id}</div>
+} 
+
+
 
 export const App = () => {
   const [count, setCount] = useState(0);
   const [title, setTitle] = useState("Pokedex");
+
+
+  useEffect(() => {
+    if (count == 4){
+      setTitle("ho raggiunto il valore 4")
+    }
+  }, [count])
 
   return (
     <div className="h-dvh flex flex-col items-center justify-center">
@@ -16,7 +31,7 @@ export const App = () => {
         <div className="flex flex-col items-center space-y-4">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md cursor-pointer hover:bg-blue-600 transition-colors"
-            onClick={() => setCount((count) => count + 3)}
+            onClick={() => setCount((count) => count + 1)}
           >
             Hai premuto il pulsante {count} {count === 1 ? "volta" : "volte"}
           </button>
